@@ -1,5 +1,6 @@
 import React from 'react';
 
+
 const CarSearchCard: React.FC = () => {
     return (
         <div className="w-full max-w-md md:max-w-6xl mx-auto bg-slate-100 shadow-lg rounded-lg overflow-hidden">

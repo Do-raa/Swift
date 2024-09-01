@@ -2,7 +2,9 @@
 
 import Link from 'next/link';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCircleLeft } from '@fortawesome/free-solid-svg-icons';
+import { faCircleLeft } from '@fortawesome/free-solid-svg-icons'; 
+
+import { Button } from "@/app/components/ui/button"
 
 export default function ManageBooking() {
     return (
@@ -53,12 +55,10 @@ export default function ManageBooking() {
                     </div>
 
                     <Link href="/new-url" passHref>
-                        <button
-                            type="button"
-                            className="w-full bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 sm:py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                        >
-                            NEXT
-                        </button>
+
+                        <Button variant="next">
+                            Next
+                        </Button>
                     </Link>
                 </form>
             </div>

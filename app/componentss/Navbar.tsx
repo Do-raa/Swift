@@ -1,19 +1,16 @@
-import { Disclosure, DisclosureButton, DisclosurePanel } from '@headlessui/react'
-import { Bars3Icon, UserCircleIcon, XMarkIcon, ClipboardDocumentListIcon, Bars3CenterLeftIcon } from '@heroicons/react/24/outline'
-import Link from 'next/link'
+import { Disclosure, DisclosureButton, DisclosurePanel } from '@headlessui/react';
+import { Bars3Icon, UserCircleIcon, XMarkIcon, ClipboardDocumentListIcon, Bars3CenterLeftIcon } from '@heroicons/react/24/outline';
+
 import { useState } from 'react';
+import { cn } from '@/app/lib/utils'; 
 import LoginRegisterCard from './LoginRegisterCard';
 
 const navigation = [
     { name: 'Manage my bookings', href: '/manage-my-booking-info', current: false, icon: ClipboardDocumentListIcon },
     { name: 'Login | Register', href: '/', current: false, icon: UserCircleIcon },
-]
+];
 
-function classNames(...classes) {
-    return classes.filter(Boolean).join(' ')
-}
-
-export default function Example() {
+export default function Navbar() {
     const [showCard, setShowCard] = useState(false);
 
     const toggleLoginRegisterCard = () => {
@@ -34,12 +31,10 @@ export default function Example() {
                             </DisclosureButton>
                         </div>
                         <div className="flex flex-1 items-center justify-between sm:items-stretch sm:justify-start">
-                            {/* Sidebar Icon */}
                             <div className="flex items-center mr-4">
                                 <Bars3CenterLeftIcon className="h-6 w-6 text-gray-400 cursor-pointer hover:bg-gray-700 hover:text-white" />
                             </div>
 
-                            {/* Logo */}
                             <div className="flex flex-shrink-0 items-center">
                                 <img
                                     alt="SWIFT"
@@ -55,11 +50,11 @@ export default function Example() {
                                         key={item.name}
                                         href={item.href}
                                         onClick={item.name === 'Login | Register' ? (e) => {
-                                            e.preventDefault(); // Prevent default link behavior
+                                            e.preventDefault();
                                             toggleLoginRegisterCard();
                                         } : undefined}
                                         aria-current={item.current ? 'page' : undefined}
-                                        className={classNames(
+                                        className={cn(
                                             item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
                                             'rounded-md px-3 py-2 text-sm font-medium flex items-center space-x-2'
                                         )}
@@ -81,7 +76,7 @@ export default function Example() {
                                 as="a"
                                 href={item.href}
                                 aria-current={item.current ? 'page' : undefined}
-                                className={classNames(
+                                className={cn(
                                     item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
                                     'block rounded-md px-3 py-2 text-base font-medium',
                                 )}
@@ -95,14 +90,12 @@ export default function Example() {
 
             {showCard && (
                 <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-                    {/* Clickable background */}
                     <div className="absolute inset-0 backdrop-blur-md" onClick={toggleLoginRegisterCard}></div>
-                    {/* Prevent clicks on the card itself from closing the card */}
                     <div onClick={(e) => e.stopPropagation()}>
-                        <LoginRegisterCard onClose={() => setShowCard(false)}/>
+                        <LoginRegisterCard onClose={() => setShowCard(false)} />
                     </div>
                 </div>
             )}
         </>
-    )
+    );
 }
