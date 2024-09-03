@@ -1,16 +1,17 @@
 "use client"
 
-import Navbar from "@/app/components/Navbar"
-import CarSearchCard from "@/app/components/CarSearchCard"
-import Features from "@/app/components/Features"
-import Carousel from "@/app/components/Carousel"
-import Footer from "@/app/components/Footer"
+import Navbar from "@/app/componentss/Navbar"
+import CarSearchCard from "@/app/componentss/CarSearchCard"
+import Features from "@/app/componentss/Features"
+import Carousel from "@/app/componentss/Carousel"
+import Footer from "@/app/componentss/Footer" 
+
+
 
 export default function Home() {
   return (
     <main className="flex flex-col h-full w-full">
       <Navbar />
-      
         {/* Background Image Section */}
         <div className="relative h-screen bg-cover bg-center" style={{ backgroundImage: "url('/orange_car.jpg')" }}>
           <div className="absolute inset-0 flex items-center justify-center">

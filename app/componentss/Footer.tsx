@@ -42,7 +42,6 @@ export default function Footer() {
                     <a href="#" className="text-gray-400 hover:text-white">Rental information</a>
                     <a href="#" className="text-gray-400 hover:text-white">SIXT Group</a>
                     <a href="#" className="text-gray-400 hover:text-white">Recruitment</a>
-                    <a href="#" className="text-gray-400 hover:text-white">Regine Sixt Children's Aid Foundation</a>
                 </div>
             </div>
         </footer>
