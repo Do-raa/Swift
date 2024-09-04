@@ -2,18 +2,18 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
+import { signIn } from "next-auth/react";
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGoogle } from '@fortawesome/free-brands-svg-icons';
 import { faXmark } from '@fortawesome/free-solid-svg-icons'; 
 
 import { RegisterForm } from "@/app/componentss/RegisterForm" 
-import { LoginForm } from "@/app/componentss/LoginForm" 
+import { LoginForm } from "@/app/componentss/LoginForm"  
 
 import {
     Card,
     CardContent,
-    CardDescription,
     CardFooter,
     CardHeader,
     CardTitle,
@@ -24,6 +24,10 @@ import {
 const LoginRegisterCard: React.FC<{ onClose: () => void }> = ({ onClose }) => { 
     const [isNotRegistered, setIsNotRegistered] = useState(false)
 
+    const handleGoogleSignIn = () => {
+        signIn("google", { callbackUrl: "/my-profile" });
+    };
+
     return (
         <Card className="relative w-full z-20 ">
             <CardHeader className='mt-8'>
@@ -31,7 +35,8 @@ const LoginRegisterCard: React.FC<{ onClose: () => void }> = ({ onClose }) => {
             </CardHeader>
             <CardContent>
                 {/* Google Sign-In Button */}
-                <button className="w-full flex items-center justify-center py-2 px-4 bg-red-600 text-white rounded-md hover:bg-red-700 focus:outline-none">
+                <button onClick={handleGoogleSignIn}
+                        className="w-full flex items-center justify-center py-2 px-4 bg-red-600 text-white rounded-md hover:bg-red-700 focus:outline-none">
                     <FontAwesomeIcon icon={faGoogle} className="mr-2" />
                     Continue with Google
                 </button>

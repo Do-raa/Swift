@@ -3,9 +3,14 @@ import User from "@/models/User";
 import type { NextAuthOptions } from "next-auth";
 import credentials from "next-auth/providers/credentials";
 import bcrypt from "bcryptjs";
+import GoogleProvider from "next-auth/providers/google";
 
 export const authOptions: NextAuthOptions = {
     providers: [
+         GoogleProvider({
+            clientId: process.env.GOOGLE_CLIENT_ID as string,
+            clientSecret: process.env.GOOGLE_CLIENT_SECRET as string,
+        }),
         credentials({
             name: "Credentials",
             id: "credentials",
@@ -30,7 +35,8 @@ export const authOptions: NextAuthOptions = {
                 return user;
             },
         }),
-    ],
+    ], 
+    secret: process.env.AUTH_SECRET,
     session: {
         strategy: "jwt",
     }
